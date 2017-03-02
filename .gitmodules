@@ -1,0 +1,12 @@
+[submodule "PeachDefaultServiceHub"]
+	path = PeachDefaultServiceHub
+	url = https://github.com/PeachProject/PeachDefaultServiceHub.git
+	branch = master
+[submodule "PeachClient"]
+	path = PeachClient
+	url = https://github.com/PeachProject/PeachClient.git
+	branch = master
+[submodule "PeachBackend"]
+	path = PeachBackend
+	url = https://github.com/PeachProject/PeachBackend.git
+	branch = master

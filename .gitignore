@@ -1,0 +1,5 @@
+*.pyc
+venv
+.temp
+workflow_script_queue
+peach_temp_data
