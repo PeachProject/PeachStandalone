@@ -1,6 +1,6 @@
-ldap_server = "localhost:389"
 
-def adapt_shared_for_module(module):
+
+def adapt_shared_for_module(module, ldap_server):
     from config_editors import server_config_editor    
     import setup_utilities
     setup_utilities.log("Adapting PeachShared config for module " + module)
@@ -27,6 +27,7 @@ def main():
     from config_editors import server_config_editor
 
     print "Please enter your ldap server / domain you selected at the ldap setup:"
+    ldap_server = "localhost:389"
     ldap_server = raw_input()
 
     import os 
@@ -67,7 +68,7 @@ def main():
     flask_server_config = {
         "PeachClient_Git_Repo": PeachClient_Git_Repo,
         "peach_temp_data": peach_temp_data,
-        "mysql_host": "localhost:3306",
+        "mysql_host": "localhost",
         "mysql_user": "peach",
         "mysql_pw": "peachuser",
         "mysql_database": "peach",
@@ -76,7 +77,7 @@ def main():
 
     server_config_editor.adapt_config(flask_sample_config, flask_output_config, **flask_server_config)
 
-    adapt_shared_for_module("PeachClient")
+    adapt_shared_for_module("PeachClient", ldap_server)
 
     setup_utilities.log("Successfully configured PeachClient!")
 
@@ -92,7 +93,7 @@ def main():
         "local_queue_temp": workflow_script_queue,
         "Peach_Service_Hub": os.path.join(dir_path, "PeachDefaultServiceHub"),
         "Kafka_Server": "localhost:9092",
-        "mysql_host": "localhost:3306",
+        "mysql_host": "localhost",
         "mysql_user": "peach",
         "mysql_pw": "peachuser",
         "mysql_database": "peach"
@@ -100,7 +101,7 @@ def main():
 
     server_config_editor.adapt_config(backend_sample_config, backend_output_config, **backend_config)
 
-    adapt_shared_for_module("PeachBackend")
+    adapt_shared_for_module("PeachBackend", ldap_server)
 
 if __name__ == '__main__':
     main()
