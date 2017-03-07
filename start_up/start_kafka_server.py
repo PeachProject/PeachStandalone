@@ -16,6 +16,9 @@ def main():
     ]
     all_commands = "; ".join(commands)
     subprocess_cmd(all_commands)
+    print "Starting kafka server..."
+
+    wait_for_startup(3)
 
     print "Successfully started kafka server!\n"
 
@@ -58,6 +61,21 @@ def query_yes_no(question, default="yes"):
         else:
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
+def wait_for_startup(seconds):
+    import time
+    iterations = seconds * 10
+    for x in range (0, iterations):  
+        left_time = seconds - (0.1*(x+1))
+        b = "[" + ("#" * x) + ">" + (" " * (iterations-x-1)) + "]"
+        time_display = " " + ("%.1f" % left_time) + "s "
+        split = (iterations / 2 + 1)
+        f = b[:split] + time_display + b[split:]
+        print (f)
+        import sys
+        sys.stdout.write("\033[F") # Cursor up one line
+        time.sleep(0.1)
+    print ""
+
 
 if __name__ == '__main__':
     main()
