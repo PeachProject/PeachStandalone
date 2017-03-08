@@ -6,9 +6,6 @@ useradd $kafka_username -m
 echo "Please set a password for user '$kafka_username'"
 passwd $kafka_username
 adduser $kafka_username sudo
-su -c "sudo apt-get update" $kafka_username
-su -c "sudo apt-get install default-jre" $kafka_username
-su -c "sudo apt-get install zookeeperd" $kafka_username
 su -c "mkdir -p ~$kafka_username/Downloads" $kafka_username
 su -c "wget 'http://mirror.cc.columbia.edu/pub/software/apache/kafka/0.8.2.1/kafka_2.11-0.8.2.1.tgz' -O ~$kafka_username/Downloads/kafka.tgz" $kafka_username
 su -c "mkdir -p ~$kafka_username/kafka" $kafka_username
