@@ -1,5 +1,5 @@
 #!/bin/bash
-if sudo apt-get install python-apt ; then
+if sudo apt-get install python-apt python-dev gcc ; then
     echo "Successfully installed python-apt" ;
     sudo python setup/sudo_setup_pre.py ;
     python setup/non_sudo_setup_pre.py ;
