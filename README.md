@@ -31,49 +31,49 @@ Peach is similar to [OpenMOLE](https://www.openmole.org/). However built with th
 
 ## Setting up the standalone version
 
-  ```
-  . setup.sh
-  ```
+```
+$ . setup.sh
+```
 
-  Requirements:
-    - Ubuntu 14+
-    - Internet Access
-    - root access (sudo)
+Requirements:
+  - Ubuntu 14+
+  - Internet Access
+  - root access (sudo)
 
-  You will be guided through the installation process. When ldap server configuration pops up memorize or write down what you've put in, please. Later on you will need it. Same with mysql server installation.
-  
-  Next you will be asked if you would like to auto-install the php ldap manager. We highly suggest doing so. Afterwards you will have to manually configure the php ldap manager. You can find a walk-through [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-a-basic-ldap-server-on-an-ubuntu-12-04-vps#configure-phpldapadmin)
+You will be guided through the installation process. When ldap server configuration pops up memorize or write down what you've put in, please. Later on you will need it. Same with mysql server installation.
 
-  Afterwards you will be asked for a username for a kafka user. Kafka recommends adding a separate kafka user for settings up a kafka server. At this point we are asking for the username of the user that should either be created or extended to be the kafka server host user. If unsure, just enter `kafka` and give it a strong password.
+Next you will be asked if you would like to auto-install the php ldap manager. We highly suggest doing so. Afterwards you will have to manually configure the php ldap manager. You can find a walk-through [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-a-basic-ldap-server-on-an-ubuntu-12-04-vps#configure-phpldapadmin)
 
-  You will be asked to put in the mysql root password. Please do so.
+Afterwards you will be asked for a username for a kafka user. Kafka recommends adding a separate kafka user for settings up a kafka server. At this point we are asking for the username of the user that should either be created or extended to be the kafka server host user. If unsure, just enter `kafka` and give it a strong password.
 
-  Last but not least please enter your ldap domain / server.
+You will be asked to put in the mysql root password. Please do so.
 
-  You have successfully set up the working peach server at this point.
+Last but not least please enter your ldap domain / server.
+
+You have successfully set up the working peach server at this point.
 
 ## Starting your peach standalone server
 
-  ```
-  . start.sh
-  ```
+```
+$ . start.sh
+```
 
-  Requirements:
-    - Ubuntu 14+
-    - gnome-terminal
-    - At least 1 min of free time
+Requirements:
+  - Ubuntu 14+
+  - gnome-terminal
+  - At least 1 min of free time
 
-  The load up can take up to one minute. If you access your web address (default: `http://localhost:5000/`) and none of your services show when creating a workflow, just wait for the minute to finish and update the page again. It will work then
+The load up can take up to one minute. If you access your web address (default: `http://localhost:5000/`) and none of your services show when creating a workflow, just wait for the minute to finish and update the page again. It will work then
 
 ## Starting your peach standalone server without guided
 
-  ```
-  . start_nogui.sh
-  ```
+```
+$ . start_nogui.sh
+```
 
-  Requirements:
+Requirements:
   - Ubuntu 14+
-  - "screen" package (Install with `$ sudo apt-get install screen`)
+  - [`screen`](https://wiki.ubuntuusers.de/Screen/) package (Install with `$ sudo apt-get install screen`)
   - At least 1 min of free time
 
-  Further information on how to view the output will be printed when calling `. start_nogui.sh`.
+Further information on how to view the output will be printed when calling `. start_nogui.sh`.
