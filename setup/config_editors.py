@@ -1,6 +1,6 @@
 
 
-def adapt_shared_for_module(module, ldap_server):
+def adapt_shared_for_module(module, ldap_server, ldap_domain):
     from config_editors import server_config_editor    
     import setup_utilities
     setup_utilities.log("Adapting PeachShared config for module " + module)
@@ -11,14 +11,19 @@ def adapt_shared_for_module(module, ldap_server):
     shared_config_folder = os.path.join(shared_folder, "library", "config")
     shared_config_in = os.path.join(shared_config_folder, "peachSharedConfig.sample.py")
     shared_config_out = os.path.join(shared_config_folder, "peachSharedConfig.py")
+    suffix = ldap_domain.replace(".", ",dc=")
+    prefix = "cn={},dc="
+    ldap_dn_template = prefix + suffix
+    
     shared_config = {
         "Parent": module_folder,
         "peach_temp_data": os.path.join(dir_path, "peach_temp_data"),
         "kafka_server": "localhost:9092",
         "ldap_server": ldap_server,
-        "peach_service_temp": os.path.join(dir_path, "workflow_script_queue")
+        "peach_service_temp": os.path.join(dir_path, "workflow_script_queue"),
+        "LDAPDNTemplate": ldap_dn_template
     }    
-
+    
     server_config_editor.adapt_config(shared_config_in, shared_config_out, **shared_config)
     setup_utilities.log("Successfully adapted PeachShared config for module " + module)
 
@@ -26,9 +31,11 @@ def main():
     import setup_utilities
     from config_editors import server_config_editor
 
-    print "Please enter your ldap server / domain you selected at the ldap setup:"
-    ldap_server = "localhost:389"
+    print "Please enter your ldap server (probably: \"localhost\"):"
+    ldap_server = "localhost"
     ldap_server = raw_input()
+    print "Please enter your ldap domain (e.g. \"peach.com\")"
+    ldap_domain = raw_input()
 
     import os 
     dir_path = os.getcwd()
@@ -77,7 +84,7 @@ def main():
 
     server_config_editor.adapt_config(flask_sample_config, flask_output_config, **flask_server_config)
 
-    adapt_shared_for_module("PeachClient", ldap_server)
+    adapt_shared_for_module("PeachClient", ldap_server, ldap_domain)
 
     setup_utilities.log("Successfully configured PeachClient!")
 
@@ -101,7 +108,7 @@ def main():
 
     server_config_editor.adapt_config(backend_sample_config, backend_output_config, **backend_config)
 
-    adapt_shared_for_module("PeachBackend", ldap_server)
+    adapt_shared_for_module("PeachBackend", ldap_server, ldap_domain)
 
 if __name__ == '__main__':
     main()
