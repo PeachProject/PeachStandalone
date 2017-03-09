@@ -64,3 +64,16 @@ Peach is similar to [OpenMOLE](https://www.openmole.org/). However built with th
     - At least 1 min of free time
 
   The load up can take up to one minute. If you access your web address (default: `http://localhost:5000/`) and none of your services show when creating a workflow, just wait for the minute to finish and update the page again. It will work then
+
+## Starting your peach standalone server without guided
+
+  ```
+  . start_nogui.sh
+  ```
+
+  Requirements:
+  - Ubuntu 14+
+  - "screen" package (Install with `$ sudo apt-get install screen`)
+  - At least 1 min of free time
+
+  Further information on how to view the output will be printed when calling `. start_nogui.sh`.
