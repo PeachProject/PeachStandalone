@@ -65,7 +65,7 @@ Requirements:
 
 The load up can take up to one minute. If you access your web address (default: `http://localhost:5000/`) and none of your services show when creating a workflow, just wait for the minute to finish and update the page again. It will work then
 
-## Starting your peach standalone server without guided
+## Starting your peach standalone server without gui
 
 ```
 $ . start_nogui.sh
